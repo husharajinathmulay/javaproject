@@ -1,0 +1,8 @@
+body
+{
+	margin:auto;
+	width:50%;
+	padding: 25px 50px 75px 100px;
+	dispalay:flex;
+	flex-direction:column;
+}

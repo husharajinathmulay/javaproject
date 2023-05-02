@@ -1,0 +1,200 @@
+1- find all candidate having java technology
+
+
+SELECT * FROM LMSDatabase.tblMentor;
+use LMSDatabase;
+select  
+tblFellowShipCandidates.first_name,tblFellowShipCandidates.last_name 
+from tblFellowShipCandidates
+inner join 
+tblCandidateTechStackAssignment on
+tblCandidateTechStackAssignment.candidate_id=tblFellowShipCandidates.id
+
+inner join tblCompanyRequirement on
+tblCompanyRequirement.id= tblCandidateTechStackAssignment.requirement_id
+
+inner join tblTechStack on tblCompanyRequirement.tech_stack_id = tblTechStack.id
+and tblTechStack.tech_name='Node.js';
+
+===========================================================
+3- find all candidate which is present today
+
+select  fc.first_name,fc.last_name from tblFellowShipCandidates fc
+inner join tblUserEngeggement ue on ue.candidate_id=fc.id and
+ue.DateTime like'2019-11-17%';
+==========================================================
+
+4- find all candidate which is come late today
+
+select distinct fc.first_name,fc.last_name from tblFellowShipCandidates fc
+inner join tblUserEngeggement ue on ue.candidate_id=fc.id and
+ue.DateTimebetween '2019-11-20 09:30:00' and '2019-11-20 09:60:00';
+========================================================================
+5- find all candidate which had gone early yesterday
+
+select distinct fc.first_name,fc.last_name from tblFellowShipCandidates fc
+inner join tblUserEngeggement ue on ue.candidate_id=fc.id and
+ue.DateTime
+between '2019-11-22 19:00:00' and '2019-11-22 19:30:00';
+=========================================================================
+6- find all candidate which is come early today
+
+select distinct fc.first_name,fc.last_name from tblFellowShipCandidates fc
+inner join tblUserEngeggement ue on ue.candidate_id=fc.id and
+ue.DateTime
+between '2019-11-21 09:00:00' and '2019-11-21 19:30:00';
+=================================================================
+2- find all mentors and ideations have java technology
+
+select  mt.name,mt.mentor_type,ts.tech_name
+from tblMentor mt
+inner join tblMentorTechStack mts on mts.tech_stack_id=mt.id
+inner join tblTechStack ts on ts.id= mts.tech_stack_id and ts.tech_name='java';
+
+==================================================================
+7- find name of candidate which did not assign technology
+
+select  
+fc.first_name,fc.last_name 
+from tblFellowShipCandidates fc
+inner join 
+tblCandidateTechStackAssignment ctsa on
+ctsa.candidate_id=fc.id
+inner join tblCompanyRequirement cr on
+cr.id= ctsa.requirement_id
+inner join tblTechStack ts on cr.tech_stack_id != ts.id;
+
+==================================================================
+8- find name of cnadidate which is not submit documents
+
+select fc.first_name,fc.last_name
+from tblFellowShipCandidates fc
+where id  not in(select candidate_id from tblCandidateDocuments)
+
+===================================================================
+9- find name of candidate which is not submit bank details
+
+select fc.first_name,fc.last_name
+from tblFellowShipCandidates fc
+where id not in(select candidate_id from tblCandidateBankDetails);
+==================================================================
+10-find name of candidates which is joined in dec month
+
+select fc.first_name, fc.last_name,fc.joining_date
+from tblFellowShipCandidates fc
+where month(fc.joining_date)=11;
+
+===================================================================
+11-find name of candidates which is end of couse in feb
+
+select fc.first_name, fc.last_name,fc.joining_date ,date_add(fc.joining_date,interval 16 month) as ending_date
+from tblFellowShipCandidates fc
+where date_add(fc.joining_date,interval 16 month);
+
+==================================================================
+12-find name of candidates which is ending date accounding to joining date if joining date is 22-02-2019
+
+select fc.first_name, fc.last_name,fc.joining_date ,date_add(fc.joining_date,interval 16 month) as ending_date
+from tblFellowShipCandidates fc
+where  joining_date ='2019-11-01';
+
+===================================================================
+13-find all candidates which is passed out in 2019 year
+
+select fc.first_name,fc.last_name
+from
+tblFellowShipCandidates fc
+where id in (select candidate_id from tblCandidateQualification cq where cq.passing_year=2018);
+
+=========================================================================
+
+14-which technology assign to whom candidates which is having MCA background
+
+select fc.first_name,ts.tech_name,cq.degree_name
+from tblFellowShipCandidates fc 
+inner join tblCandidateQualification cq on cq.candidate_id=fc.id and cq.degree_name='MCA'
+inner join tblCandidateTechStackAssignment ctsa on ctsa.candidate_id=cq.candidate_id
+inner join tblCompanyRequirement cr on cr.id  =ctsa.candidate_id
+inner join tblTechStack ts on ts.id= cr.tech_stack_id ;
+
+==============================================================================
+15-how many candiates which is having last month
+
+select fc.first_name, fc.last_name,fc.joining_date as joining_date,date_add(fc.joining_date,interval 16 week) as last_month_candidate
+from tblFellowShipCandidates fc
+having date_add(fc.joining_date,interval 12 week) < CURDATE() and curdate()< date_add(fc.joining_date,interval 16 week);
+
+==============================================================================
+16-how many week candidate completed in the bridgelabz since joining date if joining date is 22-02-2019 and candidate id is 2
+
+select fc.first_name, fc.last_name,fc.joining_date as joining_date ,timestampdiff(month,joining_date,curdate()) as no_of_month_complited
+from tblFellowShipCandidates fc
+where  curdate()< date_add(fc.joining_date,interval 16 week) and fc.status!=0 and fc.id=2;
+
+==========================================================================================
+17-find joining date of candidate if candidate id is 4
+
+select fc.first_name,fc.last_name,fc.joining_date from tblFellowShipCandidates fc where id=4;
+
+===================================================================
+
+18-how many week remaining of candidate in the bridglabz from today if candidate id is 5
+
+select fc.first_name, fc.last_name,fc.joining_date as joining_date ,date_add(fc.joining_date,interval 16 week) as deployment_date,timestampdiff(week,current_date(),date_add(fc.joining_date,interval 16 week)) as no_of_week_remaining
+ from tblFellowShipCandidates fc where  fc.status!=0 and fc.id=6;
+
+=====================================================================
+19-how many days remaining of candidate in the bridgelabz from today if candidate is is 6
+
+select fc.first_name, fc.last_name,fc.joining_date as joining_date ,date_add(fc.joining_date,interval 16 week) as deployment_date,timestampdiff(day,current_date(),date_add(fc.joining_date,interval 16 week)) as no_of_days_remaining
+ from tblFellowShipCandidates fc where  fc.status!=0 and fc.id=2;
+====================================================================
+20-find candidates which is deployed
+
+select fc.first_name,fc.last_name,fc.joining_date, date_add(fc.joining_date,interval 16 week) as deployment_date from tblFellowShipCandidates  as fc where  fc.status=0;
+
+===================================================================
+21-find name and other details and name of company which is assign to  condidate.
+
+select fc.first_name, fc.last_name,comp.name ,comp.location ,comp.address from tblFellowShipCandidates fc
+inner join tblCandidateTechStackAssignment ctsa on ctsa.candidate_id=fc.id
+inner join tblCompanyRequirement cr on cr.id=ctsa.requirement_id
+inner join tblCompany comp on comp.id= cr.company_id;
+
+=========================================================================
+22-find all condidate which is related to lab= banglore/mumbai/pune.
+
+select fc.first_name, fc.last_name,l.name ,l.location,l.address from tblFellowShipCandidates fc
+inner join tblCandidateTechStackAssignment ctsa on ctsa.candidate_id=fc.id
+inner join tblCompanyRequirement cr on cr.id=ctsa.requirement_id
+inner join tblTechStack ts on  ts.id= cr.tech_stack_id
+inner join tblMentorTechStack mts on mts.tech_stack_id =cr.id
+inner join tblMentor m on m.id = mts.mentor_id
+inner join tblLab l on l.id = m.lab_id
+where l.location='Pune';
+
+=============================================================================
+
+23-which requirement and mentors is assign to candidate id 2
+
+select fc.first_name, fc.last_name,m.name as mentor_name,ts.tech_name as technology_name from tblFellowShipCandidates fc
+inner join tblCandidateTechStackAssignment ctsa on ctsa.candidate_id=fc.id
+inner join tblCompanyRequirement cr on cr.id=ctsa.requirement_id
+inner join tblTechStack ts on  ts.id= cr.tech_stack_id
+inner join tblMentorTechStack mts on mts.tech_stack_id =cr.id
+inner join tblMentor m on m.id = mts.mentor_id where fc.id=2;
+
+=======================================================================================
+24-find buddy mententors and ideation mentor to perticular candidate
+
+select fc.first_name, fc.last_name,m.name as mentor_name,m.mentor_type ,ts.tech_name as technology_name from tblFellowShipCandidates fc
+inner join tblCandidateTechStackAssignment ctsa on ctsa.candidate_id=fc.id
+inner join tblCompanyRequirement cr on cr.id=ctsa.requirement_id
+inner join tblMentor m on m.id =cr.lead_id or m.id =cr.buddy_engg_id or m.id =cr.ideation_engg_id
+inner join tblTechStack ts on ts.id = cr.tech_stack_id
+where fc.id=2;
+
+
+
+
+

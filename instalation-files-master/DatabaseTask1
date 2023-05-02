@@ -1,0 +1,690 @@
+
+1***************************************************Create HiredCandidate Table***************************************************
+CREATE TABLE tblHiredCandidate(
+    -> 
+    -> id INT PRIMARY KEY,
+    -> first_name VARCHAR(20),
+    -> middle_name VARCHAR(20),
+    -> last_name VARCHAR(20),
+    -> emailid TEXT,
+    -> mobile_number VARCHAR(13),
+    -> permanent_pincode INT,
+    -> degree VARCHAR(50),
+    -> hired_city VARCHAR(50),
+    -> hired_data DATE,
+    -> hired_lab VARCHAR(50),
+    -> attitude VARCHAR(10),
+    -> communication_remark VARCHAR(10),
+    -> knowledge_remark VARCHAR(10),
+    -> aggregate_remark VARCHAR(10),
+    -> status VARCHAR(10),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30),
+    -> creator_user1 VARCHAR(30)
+    -> );
+
+ALTER TABLE tblHiredCandidate MODIFY emailid VARCHAR(50) UNIQUE;
+
+mysql> DESC tblHiredCandidate;
++----------------------+-------------+------+-----+---------+-------+
+| Field                | Type        | Null | Key | Default | Extra |
++----------------------+-------------+------+-----+---------+-------+
+| id                   | int(11)     | NO   | PRI | NULL    |       |
+| first_name           | varchar(20) | YES  |     | NULL    |       |
+| middle_name          | varchar(20) | YES  |     | NULL    |       |
+| last_name            | varchar(20) | YES  |     | NULL    |       |
+| emailid              | varchar(50) | YES  | UNI | NULL    |       |
+| mobile_number        | varchar(13) | YES  |     | NULL    |       |
+| permanent_pincode    | int(11)     | YES  |     | NULL    |       |
+| degree               | varchar(50) | YES  |     | NULL    |       |
+| hired_city           | varchar(50) | YES  |     | NULL    |       |
+| hired_data           | date        | YES  |     | NULL    |       |
+| hired_lab            | varchar(50) | YES  |     | NULL    |       |
+| attitude             | varchar(10) | YES  |     | NULL    |       |
+| communication_remark | varchar(10) | YES  |     | NULL    |       |
+| knowledge_remark     | varchar(10) | YES  |     | NULL    |       |
+| aggregate_remark     | varchar(10) | YES  |     | NULL    |       |
+| status               | varchar(10) | YES  |     | NULL    |       |
+| creator_stamp        | varchar(30) | YES  |     | NULL    |       |
+| creator_user         | varchar(30) | YES  |     | NULL    |       |
++----------------------+-------------+------+-----+---------+-------+
+
+
+2***************************************************Create FellowShip Candidate Table***************************************************
+CREATE TABLE tblFellowShipCandidates(
+    -> id INT PRIMARY KEY AUTO_INCREMENT,
+    -> first_name VARCHAR(20),
+    -> middle_name VARCHAR(20),
+    -> last_name VARCHAR(20),
+    -> emailid VARCHAR(50) UNIQUE,
+    -> mobile_number VARCHAR(13),
+    -> permanent_pincode INT,
+    -> degree VARCHAR(50),
+    -> hired_city VARCHAR(50),
+    -> hired_data DATE,
+    -> hired_lab VARCHAR(50),
+    -> attitude VARCHAR(10),
+    -> communication_remark VARCHAR(10),
+    -> knowledge_remark VARCHAR(10),
+    -> aggregate_remark VARCHAR(10),
+    -> status VARCHAR(10),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30),                                                                                                             
+    -> is_birth_date_varified INT(1),
+    -> parent_name VARCHAR(30),
+    -> parent_occupation VARCHAR(30),
+    -> parent_mobile_number VARCHAR(13),
+    -> parent_annual_salary DECIMAL(8,2),
+    -> local_address VARCHAR(100),
+    -> permanent_address VARCHAR(100),
+    -> photo_path TEXT,
+    -> joining_date DATE,
+    -> candidate_status VARCHAR(10),
+    -> personal_information VARCHAR(100),
+    -> bank_information VARCHAR(50),
+    -> educational_information VARCHAR(50),
+    -> document_status VARCHAR(10),
+    -> remark VARCHAR(10)
+    -> );
+
+mysql> DESC tblFellowShipCandidates;
++-------------------------+--------------+------+-----+---------+----------------+
+| Field                   | Type         | Null | Key | Default | Extra          |
++-------------------------+--------------+------+-----+---------+----------------+
+| id                      | int(11)      | NO   | PRI | NULL    | auto_increment |
+| first_name              | varchar(20)  | YES  |     | NULL    |                |
+| middle_name             | varchar(20)  | YES  |     | NULL    |                |
+| last_name               | varchar(20)  | YES  |     | NULL    |                |
+| emailid                 | varchar(50)  | YES  | UNI | NULL    |                |
+| mobile_number           | varchar(13)  | YES  |     | NULL    |                |
+| permanent_pincode       | int(11)      | YES  |     | NULL    |                |
+| degree                  | varchar(50)  | YES  |     | NULL    |                |
+| hired_city              | varchar(50)  | YES  |     | NULL    |                |
+| hired_data              | date         | YES  |     | NULL    |                |
+| hired_lab               | varchar(50)  | YES  |     | NULL    |                |
+| attitude                | varchar(10)  | YES  |     | NULL    |                |
+| communication_remark    | varchar(10)  | YES  |     | NULL    |                |
+| knowledge_remark        | varchar(10)  | YES  |     | NULL    |                |
+| aggregate_remark        | varchar(10)  | YES  |     | NULL    |                |
+| status                  | varchar(10)  | YES  |     | NULL    |                |
+| creator_stamp           | varchar(30)  | YES  |     | NULL    |                |
+| creator_user            | varchar(30)  | YES  |     | NULL    |                |
+| is_birth_date_varified  | int(1)       | YES  |     | NULL    |                |
+| parent_name             | varchar(30)  | YES  |     | NULL    |                |
+| parent_occupation       | varchar(30)  | YES  |     | NULL    |                |
+| parent_mobile_number    | varchar(13)  | YES  |     | NULL    |                |
+| parent_annual_salary    | decimal(8,2) | YES  |     | NULL    |                |
+| local_address           | varchar(100) | YES  |     | NULL    |                |
+| permanent_address       | varchar(100) | YES  |     | NULL    |                |
+| photo_path              | text         | YES  |     | NULL    |                |
+| joining_date            | date         | YES  |     | NULL    |                |
+| candidate_status        | varchar(10)  | YES  |     | NULL    |                |
+| personal_information    | varchar(100) | YES  |     | NULL    |                |
+| bank_information        | varchar(50)  | YES  |     | NULL    |                |
+| educational_information | varchar(50)  | YES  |     | NULL    |                |
+| document_status         | varchar(10)  | YES  |     | NULL    |                |
+| remark                  | varchar(10)  | YES  |     | NULL    |                |
++-------------------------+--------------+------+-----+---------+----------------+
+
+
+3***************************************************Create Candidate Bank Details Table***************************************************
+CREATE TABLE tblCandidateBankDetails(
+    -> id INT PRIMARY KEY AUTO_INCREMENT,
+    -> candidate_id INT,
+    -> name VARCHAR(50),
+    -> account_number VARCHAR(20),is_account_number_varified INT(1),ifsc_code VARCHAR(10),is_ifsc_code_varified INT(1),pan_number VARCHAR(12),is_pan_number_varified INT(1),addhaar_number VARCHAR(12),is_addhaar_number_varified INT(1),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30)
+    -> );
+
+ALTER TABLE tblCandidateBankDetails ADD FOREIGN KEY(candidate_id) REFERENCES tblFellowShipCandidates(id);
+mysql> desc tblCandidateBankDetails;
++----------------------------+-------------+------+-----+---------+----------------+
+| Field                      | Type        | Null | Key | Default | Extra          |
++----------------------------+-------------+------+-----+---------+----------------+
+| id                         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| candidate_id               | int(11)     | YES  | MUL | NULL    |                |
+| name                       | varchar(50) | YES  |     | NULL    |                |
+| account_number             | varchar(20) | YES  |     | NULL    |                |
+| is_account_number_varified | int(1)      | YES  |     | NULL    |                |
+| ifsc_code                  | varchar(10) | YES  |     | NULL    |                |
+| is_ifsc_code_varified      | int(1)      | YES  |     | NULL    |                |
+| pan_number                 | varchar(12) | YES  |     | NULL    |                |
+| is_pan_number_varified     | int(1)      | YES  |     | NULL    |                |
+| addhaar_number             | varchar(12) | YES  |     | NULL    |                |
+| is_addhaar_number_varified | int(1)      | YES  |     | NULL    |                |
+| creator_stamp              | varchar(30) | YES  |     | NULL    |                |
+| creator_user               | varchar(30) | YES  |     | NULL    |                |
++----------------------------+-------------+------+-----+---------+----------------+
+
+
+4***************************************************Create Candidate Qualification Table***************************************************
+
+mysql> CREATE TABLE tblCandidateQualification(
+    -> id INT PRIMARY KEY,
+    -> candidate_id INT,
+    -> diploma VARCHAR(30),
+    -> degree_name VARCHAR(30),
+    -> is_degree_name_varified INT(1),
+    -> employee_decipline VARCHAR(30),
+    -> is_employee_decipline_varified INT(1),
+    -> passing_year INT(4),
+    -> is_passing_year_varified INT(1),
+    -> aggr_per DECIMAL(2,2),
+    -> is_aggr_per_varified INT(1),
+    -> final_year_per DECIMAL(2,2),
+    -> is_final_year_per_varified INT(1),
+    -> training_institude VARCHAR(50),
+    -> is_training_institude_varified INT(1),
+    -> training_duration_month INT(4),
+    -> is_training_duration_month_varified INT(1),
+    -> other_training VARCHAR(50),
+    -> is_other_training_varified INT(1),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30)
+    -> );
+Query OK, 0 rows affected (0.32 sec)
+
+
+ALTER TABLE tblCandidateQualification ADD FOREIGN KEY(candidate_id) REFERENCES tblFellowShipCandidates(id);
+
+	
+mysql> desc tblCandidateQualification;
++-------------------------------------+--------------+------+-----+---------+-------+
+| Field                               | Type         | Null | Key | Default | Extra |
++-------------------------------------+--------------+------+-----+---------+-------+
+| id                                  | int(11)      | NO   | PRI | NULL    |       |
+| candidate_id                        | int(11)      | YES  | MUL | NULL    |       |
+| diploma                             | varchar(30)  | YES  |     | NULL    |       |
+| degree_name                         | varchar(30)  | YES  |     | NULL    |       |
+| is_degree_name_varified             | int(1)       | YES  |     | NULL    |       |
+| employee_decipline                  | varchar(30)  | YES  |     | NULL    |       |
+| is_employee_decipline_varified      | int(1)       | YES  |     | NULL    |       |
+| passing_year                        | int(4)       | YES  |     | NULL    |       |
+| is_passing_year_varified            | int(1)       | YES  |     | NULL    |       |
+| aggr_per                            | decimal(2,2) | YES  |     | NULL    |       |
+| is_aggr_per_varified                | int(1)       | YES  |     | NULL    |       |
+| final_year_per                      | decimal(2,2) | YES  |     | NULL    |       |
+| is_final_year_per_varified          | int(1)       | YES  |     | NULL    |       |
+| training_institude                  | varchar(50)  | YES  |     | NULL    |       |
+| is_training_institude_varified      | int(1)       | YES  |     | NULL    |       |
+| training_duration_month             | int(4)       | YES  |     | NULL    |       |
+| is_training_duration_month_varified | int(1)       | YES  |     | NULL    |       |
+| other_training                      | varchar(50)  | YES  |     | NULL    |       |
+| is_other_training_varified          | int(1)       | YES  |     | NULL    |       |
+| creator_stamp                       | varchar(30)  | YES  |     | NULL    |       |
+| creator_user                        | varchar(30)  | YES  |     | NULL    |       |
++-------------------------------------+--------------+------+-----+---------+-------+
+21 rows in set (0.00 sec)
+
+
+5***************************************************Create Candidate Documents Table***************************************************
+
+
+mysql> CREATE TABLE tblCandidateDocuments(
+    -> id INT PRIMARY KEY,
+    -> candidate_id INT,
+    -> doc_type VARCHAR(20),
+    -> doc_path TEXT,
+    -> status VARCHAR(10),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30)
+    -> );
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> ALTER TABLE tblCandidateDocuments ADD FOREIGN KEY(candidate_id) REFERENCES tblFellowShipCandidates(id);
+Query OK, 0 rows affected (0.89 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc tblCandidateDocuments;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   | PRI | NULL    |       |
+| candidate_id  | int(11)     | YES  | MUL | NULL    |       |
+| doc_type      | varchar(20) | YES  |     | NULL    |       |
+| doc_path      | text        | YES  |     | NULL    |       |
+| status        | varchar(10) | YES  |     | NULL    |       |
+| creator_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_user  | varchar(30) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+6***************************************************Create User Details Table***************************************************
+
+mysql> CREATE TABLE tblUserDetails(
+    -> id INT PRIMARY KEY,
+    -> email VARCHAR(50) UNIQUE,
+    -> first_name VARCHAR(30),
+    -> last_name VARCHAR(30),
+    -> password VARCHAR(30),
+    -> contact_number VARCHAR(13),
+    -> varified INT(1)
+    -> );
+Query OK, 0 rows affected (0.36 sec)
+
+mysql> DESC tblUserDetails;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | int(11)     | NO   | PRI | NULL    |       |
+| email          | varchar(50) | YES  | UNI | NULL    |       |
+| first_name     | varchar(30) | YES  |     | NULL    |       |
+| last_name      | varchar(30) | YES  |     | NULL    |       |
+| password       | varchar(30) | YES  |     | NULL    |       |
+| contact_number | varchar(13) | YES  |     | NULL    |       |
+| varified       | int(1)      | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+
+7***************************************************Create User Role Table***************************************************
+
+mysql> CREATE TABLE tblUserRoles(
+    -> user_id INT PRIMARY KEY,
+    -> role_name VARCHAR(30),
+    -> FOREIGN KEY(user_id) REFERENCES tblUserDetails(id) ON DELETE CASCADE
+    -> );
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> DESC tblUserRoles;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| user_id   | int(11)     | NO   | PRI | NULL    |       |
+| role_name | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+8***************************************************Create Company Table***************************************************
+
+mysql> CREATE TABLE tblCompany( id INT PRIMARY KEY, name VARCHAR(50), address VARCHAR(100),
+    -> location VARCHAR(50),
+    -> status VARCHAR(10),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30));
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> DESC tblCompany;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| id            | int(11)      | NO   | PRI | NULL    |       |
+| name          | varchar(50)  | YES  |     | NULL    |       |
+| address       | varchar(100) | YES  |     | NULL    |       |
+| location      | varchar(50)  | YES  |     | NULL    |       |
+| status        | varchar(10)  | YES  |     | NULL    |       |
+| creator_stamp | varchar(30)  | YES  |     | NULL    |       |
+| creator_user  | varchar(30)  | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+9***************************************************Create Tech Type Table***************************************************
+
+mysql> CREATE TABLE tblTechType(
+    -> id INT PRIMARY KEY,
+    -> type_name VARCHAR(30),
+    -> cur_status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30)
+    -> );
+Query OK, 0 rows affected (0.31 sec)
+
+mysql> DESC tblTechType;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   | PRI | NULL    |       |
+| type_name     | varchar(30) | YES  |     | NULL    |       |
+| cur_status    | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_user  | varchar(30) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+10***************************************************Create Tech Stack Table***************************************************
+
+
+mysql> CREATE TABLE tblTechStack(
+    -> id INT PRIMARY KEY,
+    -> tech_name VARCHAR(50),
+    -> image_path TEXT,
+    -> framework VARCHAR(30),
+    -> cur_status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30)
+    -> );
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> DESC tblTechStack;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   | PRI | NULL    |       |
+| tech_name     | varchar(50) | YES  |     | NULL    |       |
+| image_path    | text        | YES  |     | NULL    |       |
+| framework     | varchar(30) | YES  |     | NULL    |       |
+| cur_status    | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_user  | varchar(30) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+11***************************************************Create Mentor Table***************************************************
+
+
+mysql> CREATE TABLE tblMentor(
+    -> id INT PRIMARY KEY,
+    -> name VARCHAR(50),
+    -> mentor_type VARCHAR(30),
+    -> lab_id INT,
+    -> status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30)
+    -> );
+Query OK, 0 rows affected (0.33 sec)
+
+mysql> ALTER TABLE tblMentor
+    -> ADD
+    -> FOREIGN KEY(lab_id)
+    -> REFERENCES tblLab(id);
+Query OK, 0 rows affected (0.81 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC tblMentor;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   | PRI | NULL    |       |
+| name          | varchar(50) | YES  |     | NULL    |       |
+| mentor_type   | varchar(30) | YES  |     | NULL    |       |
+| lab_id        | int(11)     | YES  | MUL | NULL    |       |
+| status        | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_user  | varchar(30) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+12***************************************************Create Mentor Ideation Map Table***************************************************
+
+mysql> CREATE TABLE tblMentorIdeationMap(
+    -> id INT PRIMARY KEY,
+    -> mentor_id INT,
+    -> status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30),
+    -> FOREIGN KEY(mentor_id) REFERENCES tblMentor(id) ON DELETE SET NULL
+    -> );
+Query OK, 0 rows affected (0.33 sec)
+
+mysql> DESC tblMentorIdeationMap;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   | PRI | NULL    |       |
+| mentor_id     | int(11)     | YES  | MUL | NULL    |       |
+| status        | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_user  | varchar(30) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+13***************************************************Create Mentor Tech Stack Table***************************************************
+
+mysql> CREATE TABLE tblMentorTechStack(
+    -> id INT PRIMARY KEY,
+    -> mentor_id INT,
+    -> tech_stack_id INT,
+    -> status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30),
+    -> datetime DATE,
+    -> FOREIGN KEY(mentor_id) REFERENCES tblMentor(id) ON DELETE SET NULL,
+    -> FOREIGN KEY(tech_stack_id) REFERENCES tblTechStack(id) ON DELETE SET NULL
+    -> );
+Query OK, 0 rows affected (0.38 sec)
+
+mysql> DESC tblMentorTechStack;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   | PRI | NULL    |       |
+| mentor_id     | int(11)     | YES  | MUL | NULL    |       |
+| tech_stack_id | int(11)     | YES  | MUL | NULL    |       |
+| status        | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_user  | varchar(30) | YES  |     | NULL    |       |
+| datetime      | date        | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+
+14***************************************************Create Lab Table***************************************************
+
+mysql> CREATE TABLE tblLab( id INT PRIMARY KEY, name VARCHAR(30), location VARCHAR(30), address VARCHAR(100), status VARCHAR(30), creator_stamp VARCHAR(30), creator_user VARCHAR(30));
+Query OK, 0 rows affected (0.36 sec)
+
+mysql> DESC tblLab;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| id            | int(11)      | NO   | PRI | NULL    |       |
+| name          | varchar(30)  | YES  |     | NULL    |       |
+| location      | varchar(30)  | YES  |     | NULL    |       |
+| address       | varchar(100) | YES  |     | NULL    |       |
+| status        | varchar(30)  | YES  |     | NULL    |       |
+| creator_stamp | varchar(30)  | YES  |     | NULL    |       |
+| creator_user  | varchar(30)  | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+
+15***************************************************Create Lab Threshold Table***************************************************
+
+
+mysql> CREATE TABLE tblLabThreshold(
+    -> id INT PRIMARY KEY,
+    -> lab_id INT,
+    -> lab_capacity INT,
+    -> lead_threshold VARCHAR(30),
+    -> ideation_engg_threshol VARCHAR(30),
+    -> buddy_engg_threshold VARCHAR(30),
+    -> status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),                                                                                                             
+    -> creator_user VARCHAR(30),
+    -> FOREIGN KEY(lab_id) REFERENCES tblLab(id) ON DELETE SET NULL
+    -> );
+Query OK, 0 rows affected (0.39 sec)
+
+mysql> DESC tblLabThreshold;
++------------------------+-------------+------+-----+---------+-------+
+| Field                  | Type        | Null | Key | Default | Extra |
++------------------------+-------------+------+-----+---------+-------+
+| id                     | int(11)     | NO   | PRI | NULL    |       |
+| lab_id                 | int(11)     | YES  | MUL | NULL    |       |
+| lab_capacity           | int(11)     | YES  |     | NULL    |       |
+| lead_threshold         | varchar(30) | YES  |     | NULL    |       |
+| ideation_engg_threshol | varchar(30) | YES  |     | NULL    |       |
+| buddy_engg_threshold   | varchar(30) | YES  |     | NULL    |       |
+| status                 | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp          | varchar(30) | YES  |     | NULL    |       |
+| creator_user           | varchar(30) | YES  |     | NULL    |       |
++------------------------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+
+
+
+16***************************************************Create Maker Program Table***************************************************
+
+mysql> CREATE TABLE tblMakerProgram( id INT PRIMARY KEY, program_name VARCHAR(30), program_type VARCHAR(30), program_link VARCHAR(30), tech_stack_id INT, tech_type_id INT, is_program_approved INT(1), description VARCHAR(50), status VArCHAR(30), creator_stamp VARCHAR(30), creator_user VARCHAR(30), FOREIGN KEY(tech_stack_id) REFERENCES tblTechStack(id) ON DELETE SET NULL, FOREIGN KEY(tech_type_id) REFERENCES tblTechType(id) ON DELETE SET NULL );
+Query OK, 0 rows affected (0.38 sec)
+
+mysql> DESC tblMakerProgram;
++---------------------+-------------+------+-----+---------+-------+
+| Field               | Type        | Null | Key | Default | Extra |
++---------------------+-------------+------+-----+---------+-------+
+| id                  | int(11)     | NO   | PRI | NULL    |       |
+| program_name        | varchar(30) | YES  |     | NULL    |       |
+| program_type        | varchar(30) | YES  |     | NULL    |       |
+| program_link        | varchar(30) | YES  |     | NULL    |       |
+| tech_stack_id       | int(11)     | YES  | MUL | NULL    |       |
+| tech_type_id        | int(11)     | YES  | MUL | NULL    |       |
+| is_program_approved | int(1)      | YES  |     | NULL    |       |
+| description         | varchar(50) | YES  |     | NULL    |       |
+| status              | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp       | varchar(30) | YES  |     | NULL    |       |
+| creator_user        | varchar(30) | YES  |     | NULL    |       |
++---------------------+-------------+------+-----+---------+-------+
+11 rows in set (0.01 sec)
+
+
+
+
+
+17***************************************************Create App Parameters Table***************************************************
+
+mysql> CREATE TABLE tblAppParament(
+    -> id INT PRIMARY KEY,
+    -> key_type VARCHAR(30),
+    -> key_value INT,
+    -> key_text TEXT,
+    -> cur_status VARCHAR(30),
+    -> lastupd_user VARCHAR(30),
+    -> lastupd_stamp VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30),
+    -> seq_num INT
+    -> );
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> DESC tblAppParament;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| id            | int(11)     | NO   | PRI | NULL    |       |
+| key_type      | varchar(30) | YES  |     | NULL    |       |
+| key_value     | int(11)     | YES  |     | NULL    |       |
+| key_text      | text        | YES  |     | NULL    |       |
+| cur_status    | varchar(30) | YES  |     | NULL    |       |
+| lastupd_user  | varchar(30) | YES  |     | NULL    |       |
+| lastupd_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp | varchar(30) | YES  |     | NULL    |       |
+| creator_user  | varchar(30) | YES  |     | NULL    |       |
+| seq_num       | int(11)     | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+
+18***************************************************Create Company Requirement Table***************************************************
+
+mysql> CREATE TABLE tblCompanyRequirement(
+    -> id INT PRIMARY KEY,
+    -> company_id INT,
+    -> requested_month VARCHAR(20),
+    -> city VARCHAR(20),
+    -> is_doc_varification INT(1),
+    -> requirement_doc_path TEXT,
+    -> no_of_engg INT,
+    -> tech_stack_id INT,
+    -> tech_type_id INT,
+    -> maker_program_id INT,
+    -> lead_id INT,
+    -> ideation_engg_id INT,
+    -> buddy_engg_id INT,
+    -> special_remark VARCHAR(30),
+    -> status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30),
+    -> FOREIGN KEY(company_id) REFERENCES tblCompany(id) ON DELETE SET NULL,
+    -> FOREIGN KEY(tech_stack_id) REFERENCES tblTechStack(id) ON DELETE SET NULL,
+    -> FOREIGN KEY(tech_type_id) REFERENCES tblTechType(id) ON DELETE SET NULL
+    -> ,
+    -> FOREIGN KEY(maker_program_id) REFERENCES tblMakerProgram(id) ON DELETE SET NULL
+    -> );
+Query OK, 0 rows affected (0.51 sec)
+
+mysql> DESC tblCompanyRequirement;
++----------------------+-------------+------+-----+---------+-------+
+| Field                | Type        | Null | Key | Default | Extra |
++----------------------+-------------+------+-----+---------+-------+
+| id                   | int(11)     | NO   | PRI | NULL    |       |
+| company_id           | int(11)     | YES  | MUL | NULL    |       |
+| requested_month      | varchar(20) | YES  |     | NULL    |       |
+| city                 | varchar(20) | YES  |     | NULL    |       |
+| is_doc_varification  | int(1)      | YES  |     | NULL    |       |
+| requirement_doc_path | text        | YES  |     | NULL    |       |
+| no_of_engg           | int(11)     | YES  |     | NULL    |       |
+| tech_stack_id        | int(11)     | YES  | MUL | NULL    |       |
+| tech_type_id         | int(11)     | YES  | MUL | NULL    |       |
+| maker_program_id     | int(11)     | YES  | MUL | NULL    |       |
+| lead_id              | int(11)     | YES  |     | NULL    |       |
+| ideation_engg_id     | int(11)     | YES  |     | NULL    |       |
+| buddy_engg_id        | int(11)     | YES  |     | NULL    |       |
+| special_remark       | varchar(30) | YES  |     | NULL    |       |
+| status               | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp        | varchar(30) | YES  |     | NULL    |       |
+| creator_user         | varchar(30) | YES  |     | NULL    |       |
++----------------------+-------------+------+-----+---------+-------+
+17 rows in set (0.00 sec)
+
+19********************************************Create Candidate Tech Stack Assignment Table***************************************************
+
+mysql> CREATE TABLE tblCandidateTechStackAssignment(
+    -> id INT PRIMARY KEY,
+    -> requirement_id INT,
+    -> candidate_id INT,
+    -> assign_date DATE,
+    -> status VARCHAR(30),
+    -> creator_stamp VARCHAR(30),
+    -> creator_user VARCHAR(30),
+    -> FOREIGN KEY(requirement_id) REFERENCES tblCompanyRequirement(id) ON DELETE SET NULL,
+    -> FOREIGN KEY(candidate_id) REFERENCES tblFellowShipCandidates(id) ON DELETE SET NULL
+    -> );
+Query OK, 0 rows affected (0.39 sec)
+
+mysql> DESC tblCandidateTechStackAssignment;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| id             | int(11)     | NO   | PRI | NULL    |       |
+| requirement_id | int(11)     | YES  | MUL | NULL    |       |
+| candidate_id   | int(11)     | YES  | MUL | NULL    |       |
+| assign_date    | date        | YES  |     | NULL    |       |
+| status         | varchar(30) | YES  |     | NULL    |       |
+| creator_stamp  | varchar(30) | YES  |     | NULL    |       |
+| creator_user   | varchar(30) | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+***********************************************************All Talbes***********************************************************
+mysql> show tables;
++------------------------------------+
+| Tables_in_database_connection_task |
++------------------------------------+
+| tblAppParament                     |
+| tblCandidateBankDetails            |
+| tblCandidateDocuments              |
+| tblCandidateQualification          |
+| tblCandidateTechStackAssignment    |
+| tblCompany                         |
+| tblCompanyRequirement              |
+| tblFellowShipCandidates            |
+| tblHiredCandidate                  |
+| tblLab                             |
+| tblLabThreshold                    |
+| tblMakerProgram                    |
+| tblMentor                          |
+| tblMentorIdeationMap               |
+| tblMentorTechStack                 |
+| tblTechStack                       |
+| tblTechType                        |
+| tblUserDetails                     |
+| tblUserRoles                       |
++------------------------------------+
+19 rows in set (0.00 sec)
+
